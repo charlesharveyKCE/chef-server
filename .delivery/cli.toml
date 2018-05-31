@@ -1,0 +1,7 @@
+server = "chef-kce-5atu3ivyg5t7hkbn.us-west-2.opsworks-cm.io"
+api_protocol = "https"
+user = "charvey"
+enterprise = "default"
+organization = "my-org"
+git_port = "8989"
+pipeline = "master"
