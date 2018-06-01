@@ -1,4 +1,3 @@
-#
 # Author:: Adam Edwards (<adamed@chef.io>)
 # Cookbook:: windows
 # Library:: wmi_helper

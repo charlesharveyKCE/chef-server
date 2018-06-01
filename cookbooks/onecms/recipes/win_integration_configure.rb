@@ -1,4 +1,3 @@
-# Cookbook:: OneCMS
 # Recipe:: win_integration_svr_configure
 #
 # Copyright:: 2018, Charles Harvey, All Rights Reserved.

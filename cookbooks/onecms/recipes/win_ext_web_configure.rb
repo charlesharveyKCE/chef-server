@@ -1,4 +1,3 @@
-# Cookbook:: OneCMS
 # Recipe:: featureInternalAppServer
 #
 # Copyright:: 2018, Charles Harvey, All Rights Reserved.
@@ -29,9 +28,9 @@ directory "#{node['iis']['docroot']}/CDN-web" do
 end
 
 iis_pool 'CDN-Web' do
-  runtime_version "4.0"
+  runtime_version '4.0'
   pipeline_mode :Integrated
-  action [:add,:start]
+  action [:add, :start]
 end
 
 iis_site 'CDN-web' do
@@ -39,18 +38,17 @@ iis_site 'CDN-web' do
   port 9050
   path "#{node['iis']['docroot']}/CDN-web"
   application_pool 'CDN-Web'
-  action [:add,:start]
+  action [:add, :start]
 end
 
 template "#{node['iis']['docroot']}/CDN-web/Default.htm" do
   source 'default.htm.erb'
 end
 
-
 iis_pool 'Login-Web' do
-  runtime_version "4.0"
+  runtime_version '4.0'
   pipeline_mode :Integrated
-  action [:add,:start]
+  action [:add, :start]
 end
 
 directory "#{node['iis']['docroot']}/FCIL-Web" do
@@ -62,7 +60,7 @@ iis_site 'Login-Web' do
   port 9130
   path "#{node['iis']['docroot']}/FCIL-Web"
   application_pool 'Login-Web'
-  action [:add,:start]
+  action [:add, :start]
 end
 
 template "#{node['iis']['docroot']}/FCIL-Web/Default.htm" do
@@ -70,9 +68,9 @@ template "#{node['iis']['docroot']}/FCIL-Web/Default.htm" do
 end
 
 iis_pool 'ParentPortal-web' do
-  runtime_version "4.0"
+  runtime_version '4.0'
   pipeline_mode :Integrated
-  action [:add,:start]
+  action [:add, :start]
 end
 
 directory "#{node['iis']['docroot']}/ParentPortal-web" do
@@ -84,7 +82,7 @@ iis_site 'ParentPortal-Pro' do
   port 9030
   path "#{node['iis']['docroot']}/ParentPortal-web"
   application_pool 'ParentPortal-web'
-  action [:add,:start]
+  action [:add, :start]
 end
 
 template "#{node['iis']['docroot']}/ParentPortal-web/Default.htm" do

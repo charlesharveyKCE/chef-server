@@ -1,4 +1,3 @@
-# Cookbook:: OneCMS
 # Recipe:: win_int_web_svr_configure
 #
 # Copyright:: 2018, Charles Harvey, All Rights Reserved.
@@ -29,9 +28,9 @@ directory "#{node['iis']['docroot']}/CDN-web" do
 end
 
 iis_pool 'CDN-Web' do
-  runtime_version "4.0"
+  runtime_version '4.0'
   pipeline_mode :Integrated
-  action [:add,:start]
+  action [:add, :start]
 end
 
 iis_site 'CDN-web' do
@@ -39,7 +38,7 @@ iis_site 'CDN-web' do
   port 9050
   path "#{node['iis']['docroot']}/CDN-web"
   application_pool 'CDN-Web'
-  action [:add,:start]
+  action [:add, :start]
 end
 
 template "#{node['iis']['docroot']}/CDN-web/Default.htm" do
@@ -51,9 +50,9 @@ directory "#{node['iis']['docroot']}/CMS-CSS-Web" do
 end
 
 iis_pool 'CMS-CSS-Web' do
-  runtime_version "4.0"
+  runtime_version '4.0'
   pipeline_mode :Integrated
-  action [:add,:start]
+  action [:add, :start]
 end
 
 iis_site 'CMS-CSS-Web' do
@@ -61,7 +60,7 @@ iis_site 'CMS-CSS-Web' do
   port 9060
   path "#{node['iis']['docroot']}/CMS-CSS-Web"
   application_pool 'CMS-CSS-Web'
-  action [:add,:start]
+  action [:add, :start]
 end
 
 template "#{node['iis']['docroot']}/CMS-CSS-Web/Default.htm" do
@@ -73,9 +72,9 @@ directory "#{node['iis']['docroot']}/CMS-web" do
 end
 
 iis_pool 'CMS-web' do
-  runtime_version "4.0"
+  runtime_version '4.0'
   pipeline_mode :Integrated
-  action [:add,:start]
+  action [:add, :start]
 end
 
 iis_site 'CMS-web' do
@@ -83,7 +82,7 @@ iis_site 'CMS-web' do
   port 9000
   path "#{node['iis']['docroot']}/CMS-web"
   application_pool 'CMS-web'
-  action [:add,:start]
+  action [:add, :start]
 end
 
 template "#{node['iis']['docroot']}/CMS-web/Default.htm" do
@@ -95,9 +94,9 @@ directory "#{node['iis']['docroot']}/Subsidy-CSS-Web" do
 end
 
 iis_pool 'Subsidy-CSS-Web' do
-  runtime_version "4.0"
+  runtime_version '4.0'
   pipeline_mode :Integrated
-  action [:add,:start]
+  action [:add, :start]
 end
 
 iis_site 'Subsidy-CSS-Web' do
@@ -105,7 +104,7 @@ iis_site 'Subsidy-CSS-Web' do
   port 9070
   path "#{node['iis']['docroot']}/Subsidy-CSS-Web"
   application_pool 'Subsidy-CSS-Web'
-  action [:add,:start]
+  action [:add, :start]
 end
 
 template "#{node['iis']['docroot']}/Subsidy-CSS-Web/Default.htm" do
@@ -117,9 +116,9 @@ directory "#{node['iis']['docroot']}/Subsidy-web" do
 end
 
 iis_pool 'Subsidy-web' do
-  runtime_version "4.0"
+  runtime_version '4.0'
   pipeline_mode :Integrated
-  action [:add,:start]
+  action [:add, :start]
 end
 
 iis_site 'Subsidy-web' do
@@ -127,7 +126,7 @@ iis_site 'Subsidy-web' do
   port 9020
   path "#{node['iis']['docroot']}/Subsidy-web"
   application_pool 'Subsidy-web'
-  action [:add,:start]
+  action [:add, :start]
 end
 
 template "#{node['iis']['docroot']}/Subsidy-web/Default.htm" do
@@ -139,9 +138,9 @@ directory "#{node['iis']['docroot']}/TC-web" do
 end
 
 iis_pool 'TC-web' do
-  runtime_version "4.0"
+  runtime_version '4.0'
   pipeline_mode :Integrated
-  action [:add,:start]
+  action [:add, :start]
 end
 
 iis_site 'TC-web' do
@@ -149,7 +148,7 @@ iis_site 'TC-web' do
   port 9010
   path "#{node['iis']['docroot']}/TC-web"
   application_pool 'TC-web'
-  action [:add,:start]
+  action [:add, :start]
 end
 
 template "#{node['iis']['docroot']}/TC-web/Default.htm" do

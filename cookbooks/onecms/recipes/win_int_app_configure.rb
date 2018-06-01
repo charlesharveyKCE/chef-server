@@ -1,4 +1,3 @@
-# Cookbook:: onecms
 # Recipe:: win_int_app_svr_configure
 #
 # Copyright:: 2018, Charles Harvey, All Rights Reserved.
@@ -29,7 +28,7 @@ directory "#{node['iis']['docroot']}/onecms-CSS-App" do
 end
 
 iis_pool 'onecms-CSS-App' do
-  runtime_version "4.0"
+  runtime_version '4.0'
   pipeline_mode :Integrated
   action :add
 end
@@ -39,7 +38,7 @@ iis_site 'onecms-CSS-App' do
   port 9525
   path "#{node['iis']['docroot']}/onecms-CSS-App"
   application_pool 'onecms-CSS-App'
-  action [:add,:start]
+  action [:add, :start]
 end
 
 template "#{node['iis']['docroot']}/onecms-CSS-App/Default.htm" do
@@ -51,7 +50,7 @@ directory "#{node['iis']['docroot']}/onecms-CSS-Report" do
 end
 
 iis_pool 'onecms-CSS-Report' do
-  runtime_version "4.0"
+  runtime_version '4.0'
   pipeline_mode :Integrated
   action :add
 end
@@ -61,7 +60,7 @@ iis_site 'onecms-CSS-Report' do
   port 9625
   path "#{node['iis']['docroot']}/onecms-CSS-Report"
   application_pool 'onecms-CSS-Report'
-  action [:add,:start]
+  action [:add, :start]
 end
 
 template "#{node['iis']['docroot']}/onecms-CSS-Report/Default.htm" do
@@ -73,7 +72,7 @@ directory "#{node['iis']['docroot']}/onecms-CSS-restapp" do
 end
 
 iis_pool 'onecms-CSS-restapp' do
-  runtime_version "4.0"
+  runtime_version '4.0'
   pipeline_mode :Integrated
   action :add
 end
@@ -83,7 +82,7 @@ iis_site 'onecms-CSS-restapp' do
   port 9575
   path "#{node['iis']['docroot']}/onecms-CSS-restapp"
   application_pool 'onecms-CSS-restapp'
-  action [:add,:start]
+  action [:add, :start]
 end
 
 template "#{node['iis']['docroot']}/onecms-CSS-restapp/Default.htm" do
@@ -95,7 +94,7 @@ directory "#{node['iis']['docroot']}/onecms-App" do
 end
 
 iis_pool 'onecms-App' do
-  runtime_version "4.0"
+  runtime_version '4.0'
   pipeline_mode :Integrated
   action :add
 end
@@ -105,7 +104,7 @@ iis_site 'onecms-App' do
   port 9500
   path "#{node['iis']['docroot']}/onecms-App"
   application_pool 'onecms-App'
-  action [:add,:start]
+  action [:add, :start]
 end
 
 template "#{node['iis']['docroot']}/onecms-App/Default.htm" do
@@ -117,7 +116,7 @@ directory "#{node['iis']['docroot']}/onecms-AppExt" do
 end
 
 iis_pool 'onecms-AppExt' do
-  runtime_version "4.0"
+  runtime_version '4.0'
   pipeline_mode :Integrated
   action :add
 end
@@ -127,7 +126,7 @@ iis_site 'onecms-AppExt' do
   port 9650
   path "#{node['iis']['docroot']}/onecms-AppExt"
   application_pool 'onecms-AppExt'
-  action [:add,:start]
+  action [:add, :start]
 end
 
 template "#{node['iis']['docroot']}/onecms-AppExt/Default.htm" do
@@ -139,7 +138,7 @@ directory "#{node['iis']['docroot']}/onecms-AppExt" do
 end
 
 iis_pool 'onecms-AppExt' do
-  runtime_version "4.0"
+  runtime_version '4.0'
   pipeline_mode :Integrated
   action :add
 end
@@ -149,7 +148,7 @@ iis_site 'onecms-AppExt' do
   port 9650
   path "#{node['iis']['docroot']}/onecms-AppExt"
   application_pool 'onecms-AppExt'
-  action [:add,:start]
+  action [:add, :start]
 end
 
 template "#{node['iis']['docroot']}/onecms-AppExt/Default.htm" do
@@ -161,7 +160,7 @@ directory "#{node['iis']['docroot']}/onecms-report" do
 end
 
 iis_pool 'onecms-report' do
-  runtime_version "4.0"
+  runtime_version '4.0'
   pipeline_mode :Integrated
   action :add
 end
@@ -171,7 +170,7 @@ iis_site 'onecms-report' do
   port 9600
   path "#{node['iis']['docroot']}/onecms-report"
   application_pool 'onecms-report'
-  action [:add,:start]
+  action [:add, :start]
 end
 
 template "#{node['iis']['docroot']}/onecms-report/Default.htm" do
@@ -183,7 +182,7 @@ directory "#{node['iis']['docroot']}/onecms-restapp" do
 end
 
 iis_pool 'onecms-restapp' do
-  runtime_version "4.0"
+  runtime_version '4.0'
   pipeline_mode :Integrated
   action :add
 end
@@ -193,7 +192,7 @@ iis_site 'onecms-restapp' do
   port 9550
   path "#{node['iis']['docroot']}/onecms-restapp"
   application_pool 'onecms-restapp'
-  action [:add,:start]
+  action [:add, :start]
 end
 
 template "#{node['iis']['docroot']}/onecms-restapp/Default.htm" do
