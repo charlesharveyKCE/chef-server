@@ -2,7 +2,9 @@
 #
 # Copyright:: 2018, Charles Harvey, All Rights Reserved.
 
-windows_feature_powershell ['NET-Framework-45-ASPNET', 'NET-Framework-45-Core', 'NET-Framework-45-Features', 'NET-Framework-Features', 'NET-HTTP-Activation', 'NET-Non-HTTP-Activ', 'NET-WCF-HTTP-Activation45', 'NET-WCF-Services45', 'NET-WCF-TCP-Activation45', 'NET-WCF-TCP-PortSharing45', 'WAS', 'WAS-Config-APIs', 'WAS-NET-Environment', 'WAS-Process-Model', 'Web-App-Dev', 'Web-AppInit', 'Web-ASP', 'Web-Asp-Net', 'Web-Asp-Net45', 'Web-Common-Http', 'Web-Default-Doc', 'Web-Dir-Browsing', 'Web-Filtering', 'Web-Health', 'Web-Http-Errors', 'Web-Http-Logging', 'Web-ISAPI-Ext', 'Web-ISAPI-Filter', 'Web-Metabase', 'Web-Mgmt-Compat', 'Web-Mgmt-Console', 'Web-Mgmt-Tools', 'Web-Net-Ext', 'Web-Net-Ext45', 'Web-Performance', 'Web-Security', 'Web-Server', 'Web-Stat-Compression', 'Web-Static-Content', 'Web-WebServer', 'Web-Windows-Auth'] do
+include_recipe 'chocolatey::default'
+
+windows_feature_powershell ['NET-Framework-45-ASPNET', 'NET-Framework-45-Core', 'NET-Framework-45-Features', 'NET-Framework-Features', 'NET-HTTP-Activation', 'NET-Non-HTTP-Activ', 'NET-WCF-HTTP-Activation45', 'NET-WCF-Services45', 'NET-WCF-TCP-Activation45', 'NET-WCF-TCP-PortSharing45', 'WAS', 'WAS-Config-APIs', 'WAS-NET-Environment', 'WAS-Process-Model', 'Web-App-Dev', 'Web-AppInit', 'Web-ASP', 'Web-Asp-Net', 'Web-Asp-Net45', 'Web-Common-Http', 'Web-Default-Doc', 'Web-Dir-Browsing', 'Web-Filtering', 'Web-Health', 'Web-Http-Errors', 'Web-Http-Logging', 'Web-ISAPI-Ext', 'Web-ISAPI-Filter', 'Web-Metabase', 'Web-Mgmt-Tools', 'Web-Net-Ext', 'Web-Net-Ext45', 'Web-Performance', 'Web-Security', 'Web-Server', 'Web-Stat-Compression', 'Web-Static-Content', 'Web-WebServer', 'Web-Windows-Auth'] do
   action :install
 end
 
@@ -55,7 +57,7 @@ directory "#{node['iis']['docroot']}/FCIL-Web" do
   action :create
 end
 
-iis_site 'Login-Web' do
+iis_site 'FCIL-Web' do
   protocol :http
   port 9130
   path "#{node['iis']['docroot']}/FCIL-Web"
@@ -87,4 +89,31 @@ end
 
 template "#{node['iis']['docroot']}/ParentPortal-web/Default.htm" do
   source 'default.htm.erb'
+end
+
+windows_firewall_rule 'IIS-OneCMS-CDN-web-In-TCP' do
+  rule_name 'IIS-OneCMS-CDN-web-In-TCP'
+  description 'Allow OneCMS CDN-web'
+  localport '9050'
+  protocol 'TCP'
+  firewall_action :allow
+  profile :any
+end
+
+windows_firewall_rule 'IIS-OneCMS-FCIL-Web-In-TCP' do
+  rule_name 'IIS-OneCMS-FCIL-Web-In-TCP'
+  description 'Allow OneCMS FCIL-Web'
+  localport '9130'
+  protocol 'TCP'
+  firewall_action :allow
+  profile :any
+end
+
+windows_firewall_rule 'IIS-OneCMS-ParentPortal-Pro-In-TCP' do
+  rule_name 'IIS-OneCMS-ParentPortal-Pro-In-TCP'
+  description 'Allow OneCMS Parent Portal Pro'
+  localport '9030'
+  protocol 'TCP'
+  firewall_action :allow
+  profile :any
 end
