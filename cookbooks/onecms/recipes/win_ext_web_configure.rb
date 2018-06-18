@@ -47,25 +47,25 @@ template "#{node['iis']['docroot']}/CDN-web/Default.htm" do
   source 'default.htm.erb'
 end
 
-iis_pool 'Login-Web' do
+iis_pool 'fcil-web' do
   runtime_version '4.0'
   pipeline_mode :Integrated
   action [:add, :start]
 end
 
-directory "#{node['iis']['docroot']}/FCIL-Web" do
+directory "#{node['iis']['docroot']}/fcil-web" do
   action :create
 end
 
-iis_site 'FCIL-Web' do
+iis_site 'fcil-web' do
   protocol :http
   port 9130
-  path "#{node['iis']['docroot']}/FCIL-Web"
-  application_pool 'Login-Web'
+  path "#{node['iis']['docroot']}/fcil-web"
+  application_pool 'fcil-web'
   action [:add, :start]
 end
 
-template "#{node['iis']['docroot']}/FCIL-Web/Default.htm" do
+template "#{node['iis']['docroot']}/fcil-web/Default.htm" do
   source 'default.htm.erb'
 end
 
@@ -75,14 +75,14 @@ iis_pool 'ParentPortal-web' do
   action [:add, :start]
 end
 
-directory "#{node['iis']['docroot']}/ParentPortal-web" do
+directory "#{node['iis']['docroot']}/parentportal-web" do
   action :create
 end
 
 iis_site 'ParentPortal-Pro' do
   protocol :http
   port 9030
-  path "#{node['iis']['docroot']}/ParentPortal-web"
+  path "#{node['iis']['docroot']}/parentportal-web"
   application_pool 'ParentPortal-web'
   action [:add, :start]
 end
@@ -100,9 +100,9 @@ windows_firewall_rule 'IIS-OneCMS-CDN-web-In-TCP' do
   profile :any
 end
 
-windows_firewall_rule 'IIS-OneCMS-FCIL-Web-In-TCP' do
-  rule_name 'IIS-OneCMS-FCIL-Web-In-TCP'
-  description 'Allow OneCMS FCIL-Web'
+windows_firewall_rule 'IIS-OneCMS-fcil-web-In-TCP' do
+  rule_name 'IIS-OneCMS-fcil-web-In-TCP'
+  description 'Allow OneCMS fcil-web'
   localport '9130'
   protocol 'TCP'
   firewall_action :allow
